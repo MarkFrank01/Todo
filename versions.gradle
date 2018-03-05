@@ -1,6 +1,6 @@
 ext.compileSdkVersion = 27
 ext.buildToolsVersion = '27.0.3'
-ext.applicationId = "com.xfhy.todo"
+ext.applicationId = "com.wjc.todo"
 ext.minSdkVersion = 21
 ext.targetSdkVersion = 27
 ext.versionCode = 1

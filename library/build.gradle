@@ -1,15 +1,15 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
-
-
-
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion    //最小能支持的系统版本号
+        targetSdkVersion rootProject.ext.targetSdkVersion  //最佳支持的系统版本号
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -22,13 +22,49 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //design
+    api rootProject.ext.design
+    //anko
+    api rootProject.ext.anko
+    //RxKotlin
+    api rootProject.ext.rxkotlin
+    api rootProject.ext.rxandroid
+    //gson
+    api rootProject.ext.gson
+    //Okhttp Retrofit
+    api rootProject.ext.okhttp
+    api rootProject.ext.retrofit
+    api rootProject.ext.okhttp_logging
+    api rootProject.ext.retrofit_converter_gson
+    api rootProject.ext.retrofit_adapter
+    //RxLifecycle
+    api rootProject.ext.rxlifecycle_kotlin
+    api rootProject.ext.rxlifecycle_components
+    //logger
+    api rootProject.ext.logger
+    //CardView
+    api rootProject.ext.cardview
+    //RecyclerView
+    api rootProject.ext.recyclerview
+    api rootProject.ext.multidex
+    // 多dex配置
+    api rootProject.ext.app_compat
+    api rootProject.ext.design
+    api rootProject.ext.constraint_layout
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "com.airbnb.android:lottie:$lottieVersion"
+}
+repositories {
+    mavenCentral()
 }
